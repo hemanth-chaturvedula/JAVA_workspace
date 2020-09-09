@@ -7,6 +7,16 @@ public class Athlete {
 	private String category;
 	private String email;
 	private long mobile_number;
+	public Athlete() {}
+	public Athlete(int id, String name, String gender, String category, String email, long mobile_number) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.category = category;
+		this.email = email;
+		this.mobile_number = mobile_number;
+	}
 	public int getId() {
 		return id;
 	}

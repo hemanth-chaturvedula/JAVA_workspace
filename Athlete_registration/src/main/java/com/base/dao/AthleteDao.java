@@ -10,28 +10,32 @@ import com.base.beans.Athlete;
 
 public class AthleteDao {
 	JdbcTemplate template;    
-    
+    private int getMaxId() {
+    	String sql = "select max(athlete_id) from thlete;";
+    	return template.queryForObject(sql,Integer.class);
+    }
 	public void setTemplate(JdbcTemplate template) {    
 	    this.template = template;    
 	}    
-	public int save(Athlete a){    
-	    String sql="insert into Athlete_db(name,salary,designation) values('"+a.getId()+"',"+a.getName()+",'"+a.getGender()+",'"+a.getCategory()+",'"+a.getEmail()+",'"+a.getMobile_number()+"')";    
+	public int save(Athlete a){
+		a.setId(getMaxId()+1);
+	    String sql="insert into athlete(athlete_id, athlete_name,athlete_gender, category, athlete_email, athlete_mobile)  values('"+a.getId()+"',"+a.getName()+",'"+a.getGender()+",'"+a.getCategory()+",'"+a.getEmail()+",'"+a.getMobile_number()+"')";    
 	    return template.update(sql);    
 	}    
 	public int update(Athlete a){    
-	    String sql="update Athlete_db set athlete_name='"+a.getName()+"', athlete_gender="+a.getGender()+",category='"+a.getCategory()+",athlete_email='"+a.getEmail()+",athlete_mobile='"+a.getMobile_number()+"' where athlete_id="+a.getId()+"";    
+	    String sql="update athlete set athlete_name='"+a.getName()+"', athlete_gender="+a.getGender()+",category='"+a.getCategory()+",athlete_email='"+a.getEmail()+",athlete_mobile='"+a.getMobile_number()+"' where athlete_id="+a.getId()+"";    
 	    return template.update(sql);    
 	}    
 	public int delete(int id){    
-	    String sql="delete from Athlete_db where athlete_id="+id+"";    
+	    String sql="delete from athlete where athlete_id="+id+"";    
 	    return template.update(sql);    
 	}    
 	public Athlete getAthleteById(int id){    
-	    String sql="select * from Athlete_db where athlete_id=?";    
+	    String sql="select * from athlete where athlete_id=?";    
 	    return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<Athlete>(Athlete.class));    
-	}    
+	}
 	public List<Athlete> getAthletes(){    
-	    return template.query("select * from Athlete_db",new RowMapper<Athlete>(){    
+	    return template.query("select * from athlete",new RowMapper<Athlete>(){    
 	        public Athlete mapRow(ResultSet rs, int row) throws SQLException {    
 	            Athlete e=new Athlete();    
 	            e.setId(rs.getInt(1));    

@@ -14,7 +14,7 @@
          </tr>
          <tr>    
           <td>Category : </td>   
-          <td><form:input path="cateogory"  /></td>  
+          <td><form:input path="category"  /></td>  
          </tr>
          <tr>    
           <td>E-mail : </td>   

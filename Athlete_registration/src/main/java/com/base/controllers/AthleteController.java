@@ -13,7 +13,7 @@ import com.base.dao.AthleteDao;
 
 @Controller
 public class AthleteController {
-   
+	
     @Autowired    
     AthleteDao dao;
     
@@ -33,7 +33,7 @@ public class AthleteController {
     public String viewathlete(Model m){    
         List<Athlete> list=dao.getAthletes();    
         m.addAttribute("list",list);  
-        return "viewathletes";    
+        return "viewathlete";    
     }    
     
     @RequestMapping(value="/editathlete/{id}")    

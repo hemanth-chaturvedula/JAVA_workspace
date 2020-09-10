@@ -7,8 +7,8 @@
    <c:forEach var="ath" items="${list}">   
    <tr>  
    <td>${ath.id}</td>
+   <td>${ath.name}</td>  
    <td>${ath.gender}</td>  
-   <td>${ath.salary}</td>  
    <td>${ath.category}</td>
    <td>${ath.email}</td>
    <td>${ath.mobile_number}</td>  
@@ -18,4 +18,4 @@
    </c:forEach>  
    </table>  
    <br/>  
-   <a href="empform">Add New Employee</a>
+   <a href="athleteform">Add New Athlete</a>

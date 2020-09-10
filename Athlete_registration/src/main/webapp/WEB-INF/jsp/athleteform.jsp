@@ -14,7 +14,14 @@
          </tr>
          <tr>    
           <td>Category : </td>   
-          <td><form:input path="category"  /></td>  
+          <td><td><!-- form:input path="category"  /-->
+         	<form:select path="category">  
+        	<form:option value="Javelin throw" label="Javelin throw"/>  
+        	<form:option value="Shot put" label="Shot put"/>  
+        	<form:option value="Sprint" label="Sprint"/>  
+        	<form:option value="Long distance" label="Long distance"/>  
+        	</form:select>
+        	</td>  
          </tr>
          <tr>    
           <td>E-mail : </td>   
